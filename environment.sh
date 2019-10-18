@@ -98,6 +98,52 @@ function install_yarn {
 }
 
 #####################
+### EXAMPLE PROJECT
+#####################
+
+function create_project {
+  echo "Creating example project"
+  # Ensure project exists
+  if ! hash project &> /dev/null; then
+  echo "Building project"
+  mkdir project
+  cd project
+  fi
+
+  git init
+  echo "Git init"
+
+  touch .gitignore
+  echo "node_modules" >> .gitignore
+
+  echo "Downloading dependencies"
+  npm init
+  npm install express 
+  npm install bcryptjs 
+  npm install cookie-parser 
+  npm install cors 
+  npm install jsonwebtoken 
+  npm install mongoose 
+  cd ..
+  # Checks the version
+  echo "Project Version: 0.0.1"
+}
+
+function create_backend {
+  echo "Configuring backend"
+
+  cd project
+  mkdir Backend
+  echo "Created backend"
+  cd Backend
+  mkdir models
+  mkdir controllers
+  mkdir routes
+  touch index.js
+}
+
+
+#####################
 ### MAIN FUNCTION
 #####################
 function main {
@@ -105,9 +151,11 @@ function main {
   # VERSION
   # install_node_env
   # install_node
-  install_vue
-  install_yarn
-  install_mongodb
+  create_project
+  create_backend
+  # install_vue
+  # install_yarn
+  # install_mongodb
 
   echo 'Environment Complete!'
   echo 'Make sure you restart your shell. Now!\n'

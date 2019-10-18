@@ -1,4 +1,4 @@
-# Vue, Node, Express, MongoDB setup
+# Vue, Node, Yarn, MongoDB setup
 ## To be installed on any linux operating systems
 - Tested on Debian Linux
 
