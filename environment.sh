@@ -148,6 +148,34 @@ function create_backend_structure {
   mkdir controllers
   mkdir routes
   touch index.js
+
+  # Create lint
+  npm install eslint-config-strongloop --save
+  npm install eslint-plugin-node --save
+
+  echo "module.exports = {
+  env: {
+    node: true,
+    commonjs: true,
+    es6: true,
+  },
+  plugins: ['node', 'prettier'],
+  parserOptions: {
+    ecmaVersion: 8,
+  },
+};
+  " >> .eslintrc.js
+
+#   echo "
+# {
+#   'extends': ['strongloop', 'plugin:prettier/recommended'],
+#   'plugins': ['prettier'],
+#   'rules': {
+#     'prettier/prettier': 'error'
+#   }
+# }
+#   " >> .eslintrc.json
+
 }
 
 function create_index_file {
@@ -229,9 +257,9 @@ function main {
   # install_node_env
   # install_node
   # create_test
-  create_project
+  # create_project
   create_backend_structure
-  create_index_file
+  # create_index_file
   # install_vue
   # install_yarn
   # install_mongodb

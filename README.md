@@ -7,3 +7,5 @@
 2. Node globally
 3. Updates Node to version 10+
 4. MongoDB
+
+## Creates an example project
