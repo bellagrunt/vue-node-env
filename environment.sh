@@ -23,27 +23,27 @@ Sets up a complete development environment using bash.
 ### INSTALLATION FUNCTIONS
 ###########################
 
-# function install_node_env {
-#   echo "Checking NodeJS Environment"
+function install_node_env {
+  echo "Checking NodeJS Environment"
 
-#   if ! hash node; then
-#     return
-#   fi
+  if ! hash node; then
+    return
+  fi
 
-#   echo "Installing Node"
+  echo "Installing Node"
 
-#   # Node env
-#   read
+  # Node env
+  read
 
-#   curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
-#   sudo apt install nodejs
+  curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+  sudo apt install nodejs
 
-#   if hash node; then
-#     echo "Done Node."
-#   else
-#     echo "ERROR: Command line tools not found."
-#   fi
-# }
+  if hash node; then
+    echo "Done Node."
+  else
+    echo "ERROR: Command line tools not found."
+  fi
+}
 
 function install_mongodb {
   echo "Checking for mongod"
@@ -118,19 +118,19 @@ function create_project {
 
   echo "Downloading dependencies"
   npm init
-  npm install express 
-  npm install bcryptjs 
-  npm install cookie-parser 
-  npm install cors 
-  npm install jsonwebtoken 
-  npm install mongoose 
+  # npm install express 
+  # npm install bcryptjs 
+  # npm install cookie-parser 
+  # npm install cors 
+  # npm install jsonwebtoken 
+  # npm install mongoose 
   cd ..
   # Checks the version
   echo "Project Version: 0.0.1"
 }
 
-function create_backend {
-  echo "Configuring backend"
+function create_backend_structure {
+  echo "Configuring backend structure"
 
   cd project
   mkdir Backend
@@ -140,6 +140,11 @@ function create_backend {
   mkdir controllers
   mkdir routes
   touch index.js
+}
+
+function create_index_file {
+  echo "Configuring index file"
+  echo "const express = require('express');" >> index.js
 }
 
 
@@ -152,7 +157,8 @@ function main {
   # install_node_env
   # install_node
   create_project
-  create_backend
+  create_backend_structure
+  create_index_file
   # install_vue
   # install_yarn
   # install_mongodb
